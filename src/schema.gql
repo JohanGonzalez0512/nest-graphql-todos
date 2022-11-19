@@ -1,0 +1,54 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Todo {
+  id: Int!
+  description: String!
+  done: Boolean!
+}
+
+"""Todo quick aggregations"""
+type AggregationsType {
+  total: Int!
+  completed: Int!
+  pending: Int!
+}
+
+type Query {
+  """Hello World! es lo que devuelve"""
+  hello: String!
+  randomNumber: Float!
+
+  """
+  Devuelve un número aleatorio entre 0 y el número que se le pasa como parámetro
+  """
+  randomFromZeroTo(to: Int): Int!
+  todos(status: Boolean): [Todo!]!
+  todo(id: Int!): Todo!
+  totalTodos: Int!
+  completedTodos: Int!
+  pendingTodos: Int!
+  aggregations: AggregationsType!
+}
+
+type Mutation {
+  createTodo(createTodoInput: CreateTodoInput!): Todo!
+  updateTodo(updateTodoInput: UpdateTodoInput!): Todo!
+  removeTodo(id: Int!): Boolean!
+}
+
+input CreateTodoInput {
+  """Description of the todo"""
+  description: String!
+}
+
+input UpdateTodoInput {
+  id: Int!
+
+  """Description of the todo"""
+  description: String
+
+  """Is the todo done?"""
+  done: Boolean
+}
